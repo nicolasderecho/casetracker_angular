@@ -1,0 +1,42 @@
+div.row
+  .col-xs-12
+    a.btn.btn-primary([routerLink]="['/cases', case.id, 'edit']").
+      Editar pericia
+br
+
+div.row
+  div.col-xs-12
+    .well.well-lg
+      p
+        strong.
+          Carátula
+        br
+        | {{case.title}}
+      p
+        strong.
+          Expediente
+        br
+        | {{case.expedient}}
+      p
+        strong.
+          Fecha
+        br
+        | {{case.date | date:"dd/MM/yyyy" }}
+      p
+        strong.
+          Estado
+        br
+        span {{currentStatus()}}
+
+div
+  h4.
+    Comentarios
+  br
+  div.row
+    div.col-xs-12(*ngFor="let comment of case.comments")
+      comment-detail([comment]="comment")
+
+  div.row
+    .col-xs-12
+      .well
+        comment-form([object]="newComment", (created)="updateComments()")

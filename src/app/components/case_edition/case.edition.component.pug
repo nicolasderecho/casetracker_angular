@@ -1,0 +1,9 @@
+div.col-sm-6.col-sm-offset-3
+  div.panel.panel-default
+    div.panel-heading
+      h2.text-center.
+        Editar pericia
+    div.panel-body
+      .col-xs-12.text-center(*ngIf="isLoading()")
+        spinner
+      document-form([case]="case", *ngIf="!isLoading()")

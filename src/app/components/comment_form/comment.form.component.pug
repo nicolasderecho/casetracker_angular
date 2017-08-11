@@ -1,0 +1,16 @@
+form(#commentForm="ngForm", (ngSubmit)="onSubmit(commentForm)", novalidate)
+  .form-inputs
+    .form-group
+      label(for="description") Descripción
+      textarea#description.form-control(placeholder="Ingrese el comentario", name="description", [(ngModel)]="comment.description", [ngClass]="{'input-with-errors': hasErrors('description')}" )
+      span.error-message(*ngFor="let error of formErrors['description']") {{error}}
+    .form-group
+      label(for="date") Fecha
+      datepicker([(date)]="comment.date", [ngClass]="{'input-with-errors': hasErrors('date')}")
+      input#date.form-control(type="hidden",name="date", [ngModel]="comment.date")
+      span.error-message(*ngFor="let error of formErrors['date']") {{error}}
+    .form-group
+      input(type="hidden",name="commentable_id", [ngModel]="comment.commentable_id")
+      input(type="hidden",name="commentable_type", [ngModel]="comment.commentable_type")
+  div
+    input.btn.btn-success(type="submit", name="commit", value="Enviar", [disabled]="submitted")

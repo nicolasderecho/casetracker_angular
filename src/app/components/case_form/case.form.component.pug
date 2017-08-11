@@ -1,0 +1,26 @@
+form(#caseForm="ngForm", (ngSubmit)="onSubmit(caseForm)", novalidate)
+  .form-inputs
+    .form-group
+      label(for="title") Carátula
+      input#title.form-control(type="text", placeholder="Carátula", name="title", [(ngModel)]="case.title", [ngClass]="{'input-with-errors': hasErrors('title')}" )
+      span.error-message(*ngFor="let error of formErrors['title']") {{error}}
+    .form-group
+      label(for="expedient") Expediente
+      input#expedient.form-control(type="text", placeholder="Expediente", name="expedient", [(ngModel)]="case.expedient", [ngClass]="{'input-with-errors': hasErrors('expedient')}")
+      span.error-message(*ngFor="let error of formErrors['expedient']") {{error}}
+    .form-group
+      label(for="status") Estado
+      select#status.form-control(placeholder="Estado", name="status", [(ngModel)]="case.status", [ngClass]="{'input-with-errors': hasErrors('status')}")
+        option.form-control(*ngFor="let option of caseStatuses", [value]="option.id") {{option.text}}
+      span.error-message(*ngFor="let error of formErrors['status']") {{error}}      
+    .form-group
+      label(for="judge") Juez
+      input#judge.form-control(type="text", placeholder="Juez", name="judge", [(ngModel)]="case.judge", [ngClass]="{'input-with-errors': hasErrors('judge')}")
+      span.error-message(*ngFor="let error of formErrors['judge']") {{error}}
+    .form-group
+      label(for="date") Fecha
+      datepicker([(date)]="case.date", [ngClass]="{'input-with-errors': hasErrors('date')}")
+      input#date.form-control(type="hidden",name="date", [ngModel]="case.date")
+      span.error-message(*ngFor="let error of formErrors['date']") {{error}}
+  div
+    input.btn.btn-success(type="submit", name="commit", value="Enviar", [disabled]="submitted")

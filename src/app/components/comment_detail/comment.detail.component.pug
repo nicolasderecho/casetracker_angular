@@ -1,0 +1,15 @@
+div.comment.well(*ngIf="!deleted")
+  div.row
+    .col-xs-12.text-right
+      i.fa.fa-close.delete-icon( *ngIf="!deleting", (click)='deleteComment(comment.id)')
+      i.fa.fa-spinner.fa-spin.delete-icon( *ngIf="deleting", (click)='deleteComment(comment.id)')
+  div.row
+    .col-xs-12.information
+      strong
+        | {{commentOwner()}}
+      span.pull-right.text-muted
+        em 
+          | {{ commentDate() | amDateFormat:'LLLL' }}
+  div.row
+    .col-xs-12.description
+      | {{comment.description}}

@@ -1,0 +1,12 @@
+.input-with-errors{
+    border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);    
+}
+
+.error-message{
+    color: #a94442;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;    
+}

@@ -1,0 +1,45 @@
+div#wrapper(*ngIf="userSignedIn()")
+  nav.navbar.navbar-default.navbar-static-top(role="navigation", style="margin-bottom: 0")
+    div.navbar-header
+      button.navbar-toggle
+        span.sr-only.
+          Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(routerLink='/home', routerLinkActive='active').
+        Pericias
+    ul.nav.navbar-top-links.navbar-right
+      li.dropdown.
+        {{userFullName}}
+      li.dropdown
+        a( href="#", (click)="logout()").
+          Cerrar sessión
+        ul.dropdown-menu.dropdown-user
+          li
+            a.
+              Editar perfil
+          li
+            a.
+              Cambiar contraseña
+          li.divider
+          li
+            a.
+              Cerrar session
+
+    div.navbar-default.sidebar(role= "navigation")
+      div.sidebar-nav.navbar-collapse
+        ul#side-menu.nav
+          li
+            a(routerLink='/home', routerLinkActive='active').
+              Inicio
+          li
+            a(routerLink='/cases', routerLinkActive='active').
+              Pericias
+  div#page-wrapper
+    .container-fluid
+      router-outlet
+
+div#wrapper(*ngIf="!userSignedIn()")
+  .container-fluid
+    router-outlet

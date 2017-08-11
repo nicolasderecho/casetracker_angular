@@ -1,0 +1,61 @@
+.row
+  .col-xs-12
+    a.btn.btn-primary(routerLink="/cases/new").
+      Agregar pericia
+
+br
+.cases
+  .row
+    .col-xs-12
+      .well
+        .row
+          .col-xs-12.col-sm-6.col-md-4.col-lg-3
+            .form-group
+              label(for='title_contains') Carátula
+              input#title_contains.form-control(type='text', name='title_contains', [(ngModel)]='search.title_contains')
+          .col-xs-12.col-sm-6.col-md-4.col-lg-3
+            .form-group
+              label(for='expedient_contains') Expediente
+              input#expedient_contains.form-control(type='text', name='expedient_contains', [(ngModel)]='search.expedient_contains')
+          .col-xs-12.col-sm-6.col-md-4.col-lg-3
+            .form-group
+              label(for='judge_contains') Juez
+              input#judge_contains.form-control(type='text', name='judge_contains', [(ngModel)]='search.judge_contains')
+        .row
+          .col-xs-12
+            input(type='submit', (click)='searchCases()', [disabled]='isSearching()', value='Buscar')
+  br
+  .row
+    .col-xs-12([hidden]='isSearching() || !emptyResults()')
+      .well
+        h4.text-center  No se encontraron resultados
+    .col-xs-12([hidden]='!requestWithErrors()')
+      .well
+        h4.text-center  Error al intentar comunicarse con el servidor
+    .col-xs-12([hidden]='emptyResults() || isSearching() || requestWithErrors()')
+      h4  {{ cases.length }} resultados
+      table.table.table-striped.table-bordered.table-hover.table-condensed.cases-table
+        thead
+          tr
+            th.text-center #
+            th.text-center Carátula
+            th.text-center Expediente
+            th.text-center Estado
+            th.text-center Juez
+            th.text-center Fecha
+            th.text-center Acciones
+        tbody
+          tr(*ngFor='let case of cases')
+            td.text-center  {{ case.id }}
+            td.text-center  {{ case.title }}
+            td.text-center  {{ case.expedient }}
+            td.text-center  {{ case.currentStatus() }}
+            td.text-center  {{ case.judge }}
+            td.text-center  {{ case.date | date:"dd/MM/yyyy" }}
+            td.text-center  
+              a.action-link([routerLink]="['/cases', case.id]", routerLinkActive='active', href='javascript:void(0);').
+                Ver
+              a.action-link([routerLink]="['/cases', case.id, 'edit']").
+                Editar
+              a.action-link(href='javascript:void(0);', (click)='deleteCase(case.id)').
+                Eliminar                
