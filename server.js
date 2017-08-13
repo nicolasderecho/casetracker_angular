@@ -11,7 +11,7 @@ app.set('views', './src')
 
 //Assets
 
-app.use(favicon(path.join(__dirname, 'src/assets/images/favicon.png')));
+//app.use(favicon(path.join(__dirname, 'src/assets/images/favicon.png')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 app.use(express.static(path.join(__dirname, 'dist')));
 
