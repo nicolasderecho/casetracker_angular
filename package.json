@@ -5,7 +5,7 @@
   "description": "Front app",
   "engines": {
     "node": "6.9.0",
-    "yarn": "0.22.x"
+    "yarn": "0.22.0"
   },
   "scripts": {
     "preinstall": "npm i typings -g && npm i webpack -g",
@@ -15,7 +15,7 @@
     "server": "node server.js",
     "lint": "tslint ./src/**/*.ts -t verbose",
     "typings": "typings install",
-    "heroku-postbuild": "yarn typings && yarn build"
+    "heroku-postbuild": "yarn typings && yarn cache clean && npm rebuild node-sass && yarn build"
   },
   "keywords": [],
   "author": "Nicolas Derecho",
