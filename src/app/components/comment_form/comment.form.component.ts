@@ -34,7 +34,7 @@ export class CommentFormComponent implements OnInit {
   }
 
   onSubmit(form: any) {
-    let methodName = this.comment.id ? 'updateComment' : 'createComment';
+    let methodName = this.comment.id ? 'update' : 'create';
     this.submitted = true;
     this.commentService[methodName](form.value, this.comment.id).then((response: any)=> {
       this.submitted = false;

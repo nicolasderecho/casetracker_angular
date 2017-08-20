@@ -31,7 +31,7 @@ export class CommentDetailComponent {
   deleteComment(commentId: any): void{
     if (this.windowService.nativeWindow.confirm("¿Está seguro? Está a punto de eliminar el comentario") ){
       this.deleting = true;
-      this.commentsService.deleteComment(commentId).then( (response: any) => {
+      this.commentsService.delete(commentId).then( (response: any) => {
         this.deleting = false;
         this.deleted  = true;
       });

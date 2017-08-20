@@ -36,7 +36,7 @@ export class CaseDetailComponent implements OnInit, OnDestroy {
   findCase(): void {
     this.loading = true;
     this.analyticTool.trackEvent({eventCategory: 'Finding case'});
-    this.caseService.findCase(this.id).then( (response) => {      
+    this.caseService.find(this.id).then( (response) => {      
       this.case = new Case(response.json().data || {});
       console.log(this);
       this.loading = false;

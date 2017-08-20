@@ -37,11 +37,11 @@ export class CasesComponent implements OnInit {
     if(event){ event.preventDefault() }
     this.prepareSearch();
     this.analyticTool.trackEvent({eventCategory: 'Search cases'});
-    this.caseService.getCases(this.search).then( (response) => {
+    this.caseService.all(this.search).then( (response) => {
       this.cases = (response.json().data || []).map( (element: any) =>  new Case(element) );
       this.searching = false;
     }).catch( () => {
-      this.searching = false;
+      this.searching = true;
       this.serverError = true;
     });
   }
@@ -54,7 +54,7 @@ export class CasesComponent implements OnInit {
   deleteCase(caseId: any): void {
     if (this.windowService.nativeWindow.confirm("¿Está seguro? Está a punto de eliminar la pericia") ){
       this.prepareSearch();
-      this.caseService.deleteCase(caseId).then( (response: any) => {
+      this.caseService.delete(caseId).then( (response: any) => {
         this.searchCases(new Event('Search'));
       }).catch( () => {
         this.searching = false;

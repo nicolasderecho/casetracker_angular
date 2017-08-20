@@ -17,6 +17,8 @@ import { LoginComponent } from './components/login/login.component';
 import { AnalyticTool } from './services/analytic_tool.service';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthenticationService } from './services/authentication.service';
+import { HttpService } from './services/http.service';
+import { ResourceService } from './services/resource.service';
 import { CasesService } from './services/cases.service';
 import { CommentsService } from './services/comments.service';
 import { SpinnerComponent } from './components/spinner/spinner.component';
@@ -59,7 +61,7 @@ moment.locale('es');
     CommentDetailComponent
   ],
   bootstrap: [ AppComponent ],
-  providers: [ WindowRef, AnalyticTool, AuthGuard, AuthenticationService, CasesService, CommentsService, JwtHelper ]
+  providers: [ WindowRef, AnalyticTool, AuthGuard, AuthenticationService,HttpService, ResourceService, CasesService, CommentsService, JwtHelper ]
 })
 export class AppModule { }
 

@@ -32,6 +32,8 @@ br
     .col-xs-12([hidden]='!requestWithErrors()')
       .well
         h4.text-center  Error al intentar comunicarse con el servidor
+    .col-xs-12.text-center(*ngIf="isSearching()")
+      spinner
     .col-xs-12([hidden]='emptyResults() || isSearching() || requestWithErrors()')
       h4  {{ cases.length }} resultados
       table.table.table-striped.table-bordered.table-hover.table-condensed.cases-table

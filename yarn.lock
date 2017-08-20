@@ -67,6 +67,10 @@
   version "2.5.36"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.36.tgz#6d804b79a57e9380d766a2680e9362c17d9556d2"
 
+"@types/lodash@^4.14.73":
+  version "4.14.73"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.73.tgz#9837e47db8643ba5bcef2c7921f37d90f9c24213"
+
 "@types/node@^6.0.45", "@types/node@^6.0.46":
   version "6.0.68"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.68.tgz#0c43b6b8b9445feb86a0fbd3457e3f4bc591e66d"

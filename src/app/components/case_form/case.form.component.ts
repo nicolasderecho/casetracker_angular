@@ -29,7 +29,7 @@ export class CaseFormComponent {
   }
 
   onSubmit(form: any) {
-    let methodName = this.case.id ? 'updateCase' : 'createCase';
+    let methodName = this.case.id ? 'update' : 'create';
     this.submitted = true;
     this.caseService[methodName](form.value, this.case.id).then((response: any)=> {
       this.router.navigate(['/cases/' + response.json().data.id]);
