@@ -11,6 +11,7 @@ import { CaseDetailComponent } from './components/case_detail/case.detail.compon
 import { CaseCreationComponent } from './components/case_creation/case.creation.component';
 import { CaseEditionComponent } from './components/case_edition/case.edition.component';
 import { CaseFormComponent } from './components/case_form/case.form.component';
+import { BaseComponent } from './components/base.component';
 import { CommentFormComponent } from './components/comment_form/comment.form.component';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
 import { LoginComponent } from './components/login/login.component';
@@ -48,6 +49,7 @@ moment.locale('es');
   ],
   declarations: [
     AppComponent,
+    BaseComponent,
     SpinnerComponent,
     DashboardComponent,
     CaseFormComponent,

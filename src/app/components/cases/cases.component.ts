@@ -3,12 +3,15 @@ import { CasesService } from '../../services/cases.service';
 import { AnalyticTool } from '../../services/analytic_tool.service';
 import { WindowRef } from '../../services/window_ref.service';
 import { Case } from '../../models/case';
+import { SearchMixin } from '../../mixins/search.mixin';
+import { BaseComponent } from '../base.component';
+
 @Component({
   selector: 'cases',
   templateUrl: './cases.component.pug',
   styles: [require('./cases.component.scss').toString()]
 })
-export class CasesComponent implements OnInit { 
+export class CasesComponent extends SearchMixin(BaseComponent) implements OnInit { 
 
   private cases: any;
   private searching: boolean;
@@ -16,6 +19,7 @@ export class CasesComponent implements OnInit {
   private search: any;
 
   constructor(private caseService: CasesService, private analyticTool: AnalyticTool, private windowService: WindowRef) {
+    super();
     this.cases = [];
     this.search = {};
     this.serverError = false;
